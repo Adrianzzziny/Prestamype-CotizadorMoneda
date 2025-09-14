@@ -5,7 +5,7 @@ Construida con **React**, **Redux Toolkit**, **TypeScript** y **TailwindCSS**.
 
 ## 🌐 Publicado en Netlify
 
- - url: https://github.com/Adrianzzziny/Prestamype-CotizadorMoneda.git
+ - url: https://cotizadoradrianescobar.netlify.app/
 
 ## 🚀 Requisitos previos
 
