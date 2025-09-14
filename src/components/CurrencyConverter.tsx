@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from '../firebase/config';
@@ -16,7 +16,13 @@ export const CurrencyConverter = () => {
 
   // Leemos los datos del estado de Redux con useSelector
   const { purchasePrice, salePrice, amount, conversionDirection } = useAppSelector((state: RootState) => state.currency);
+
+  {/* Estado para controlar el tab activo 1.0
     const [activeTab, setActiveTab] = useState<"compra" | "venta">("compra");
+  */}
+
+    {/* Función para establecer el tab activo 2.0 */}
+    const activeTab = conversionDirection === "usdToPen" ? "compra" : "venta";
 
   // useEffect se ejecuta una vez para establecer la conexión con Firebase
   useEffect(() => {
@@ -51,7 +57,8 @@ export const CurrencyConverter = () => {
   // Lógica para el formato del input
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^0-9.]/g, '');
-    dispatch(setAmount(value));
+    const limitedValue = value.slice(0, 6);
+    dispatch(setAmount(limitedValue));
   };
   
   // Definimos las etiquetas y símbolos según la dirección del cambio
@@ -85,10 +92,9 @@ export const CurrencyConverter = () => {
              {/* Tabs Compra / Venta */}
         <div className="flex border-b border-gray-200">
           <button
-            onClick={() => {
-                setActiveTab("compra");
-                dispatch(setDirection("usdToPen"))
-            }}
+            onClick={
+              () => dispatch(setDirection("usdToPen"))
+              }
             className={`flex-1 py-2 text-center text-lg font-semibold ${
               activeTab === "compra"
                 ? "text-[#2F00FF] border-b-2 border-[#2F00FF]"
@@ -98,10 +104,9 @@ export const CurrencyConverter = () => {
             Dólar compra<span className="block font-bold">{purchasePrice.toFixed(4)}</span>
           </button>
           <button
-            onClick={() => {
-                setActiveTab("venta");
-                dispatch(setDirection("penToUsd"));
-            }}
+            onClick={
+              () => dispatch(setDirection("penToUsd"))
+              }
             className={`flex-1 py-2 text-center text-lg font-semibold ${
               activeTab === "venta"
                 ? "text-[#2F00FF] border-b-2 border-[#2F00FF]"
@@ -122,12 +127,12 @@ export const CurrencyConverter = () => {
             <span className="flex-1 bg-[#E7E7ED] text-[#6E46E6] font-semibold 
                    flex items-center justify-center h-full w-full">{sendCurrency.label}</span>
             <div className='flex-[3] flex items-center justify-end bg-gray-100 px-3 h-full w-full'>
-              <span className="text-2xl font-bold text-gray-800 mr-2">{sendCurrency.symbol}</span>
+              <span className="text-2xl font-bold text-gray-800 mr-6 bg-transparent">{sendCurrency.symbol}</span>
               <input 
                 type="text"
                 value={amount}
                 onChange={handleAmountChange}
-                className="text-right text-2xl font-bold text-gray-800 outline-none w-16 bg-transparent"
+                className="text-right text-2xl font-bold text-gray-800 outline-none w-22 bg-transparent"
               />
             </div>
           </div>
@@ -145,7 +150,7 @@ export const CurrencyConverter = () => {
           <div className="w-full bg-gray-100 rounded-lg p-3 flex justify-between items-center mt-3 border border-[#6E46E6]">
             <span className="flex-1 bg-[#E7E7ED] text-[#6E46E6] font-semibold">{receiveCurrency.label}</span>
             <div className='flex-[3] flex items-center justify-end bg-gray-100 px-3 h-full w-full'>
-               <span className="text-2xl font-bold text-gray-800 mr-2">{receiveCurrency.symbol}</span>
+               <span className="text-2xl font-bold text-gray-800 mr-4">{receiveCurrency.symbol}</span>
                <span className="text-2xl font-bold text-gray-800">{calculatedResult}</span>
             </div>
           </div>
