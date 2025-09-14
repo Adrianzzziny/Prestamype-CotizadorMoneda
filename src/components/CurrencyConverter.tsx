@@ -124,7 +124,7 @@ export const CurrencyConverter = () => {
 
           {/* Input para la cantidad que se envía */}  
           <div className="w-full bg-gray-100 rounded-lg p-3 flex justify-between items-center mb-3 border border-[#6E46E6]">
-            <span className="flex-1 bg-[#E7E7ED] text-[#6E46E6] font-semibold 
+            <span className="flex-1 text-[#6E46E6] text-lg font-semibold 
                    flex items-center justify-center h-full w-full">{sendCurrency.label}</span>
             <div className='flex-[3] flex items-center justify-end bg-gray-100 px-3 h-full w-full'>
               <span className="text-2xl font-bold text-gray-800 mr-6 bg-transparent">{sendCurrency.symbol}</span>
@@ -148,7 +148,8 @@ export const CurrencyConverter = () => {
           
           {/* Input/Display para la cantidad que recibes */}
           <div className="w-full bg-gray-100 rounded-lg p-3 flex justify-between items-center mt-3 border border-[#6E46E6]">
-            <span className="flex-1 bg-[#E7E7ED] text-[#6E46E6] font-semibold">{receiveCurrency.label}</span>
+            <span className="flex-1 text-[#6E46E6] text-lg font-semibold 
+                   flex items-center justify-center h-full w-full">{receiveCurrency.label}</span>
             <div className='flex-[3] flex items-center justify-end bg-gray-100 px-3 h-full w-full'>
                <span className="text-2xl font-bold text-gray-800 mr-4">{receiveCurrency.symbol}</span>
                <span className="text-2xl font-bold text-gray-800">{calculatedResult}</span>
