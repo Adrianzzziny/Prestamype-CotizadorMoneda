@@ -4,9 +4,8 @@ Aplicación web que permite convertir entre **dólares y soles** en tiempo real,
 Construida con **React**, **Redux Toolkit**, **TypeScript** y **TailwindCSS**.
 
 ## 🌐 Publicado en Netlify
-```bash
-  url: https://github.com/Adrianzzziny/Prestamype-CotizadorMoneda.git
----
+
+ - url: https://github.com/Adrianzzziny/Prestamype-CotizadorMoneda.git
 
 ## 🚀 Requisitos previos
 
