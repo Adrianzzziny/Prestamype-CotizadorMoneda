@@ -3,7 +3,7 @@ import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { store } from "../store/store";
 import { setRates } from "../store/currencySlice";
 
-// Tu configuración de Firebase
+// Configuración de Firebase
 const firebaseConfig = {  
   apiKey: "AIzaSyAs4-CG_yVDa4keSwGONSRb1kpA6usPEww",  
   authDomain: "exchangeratecs-6eea8.firebaseapp.com",  
